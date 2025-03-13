@@ -4,8 +4,16 @@ require('dotenv').config();
 const app = express();
 const PORT = 4000;
 const TARGET_URL = process.env.CUSTOM_URL;
+const cors = require('cors');
 
 console.log(TARGET_URL);
+app.use(cors({
+    origin: '*', // Change * to specific domain for security
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+app.options('*', cors());
 
 // Proxy middleware
 app.use('/', createProxyMiddleware({
