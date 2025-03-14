@@ -2,18 +2,12 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 const app = express();
-const PORT = 5678;
+const PORT = process.env.PORT;
 const TARGET_URL = process.env.CUSTOM_URL;
 const cors = require('cors');
 
 console.log(TARGET_URL);
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
-app.options('*', cors());
+console.log(TARGET_URL)
 
 // Proxy middleware
 app.use('/', createProxyMiddleware({
@@ -25,6 +19,6 @@ app.use('/', createProxyMiddleware({
     },
 }));
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log(`Reverse proxy running on http://localhost:${PORT}`);
 })
