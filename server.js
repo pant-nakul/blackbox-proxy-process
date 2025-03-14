@@ -2,7 +2,7 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 5678;
 const TARGET_URL = process.env.CUSTOM_URL;
 const cors = require('cors');
 
