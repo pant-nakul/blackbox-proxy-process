@@ -4,10 +4,8 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 1000;
 const TARGET_URL = process.env.CUSTOM_URL;
-const cors = require('cors');
-
-console.log(TARGET_URL);
 console.log(TARGET_URL)
+console.log(PORT)
 
 // Proxy middleware
 app.use('/', createProxyMiddleware({
@@ -20,5 +18,5 @@ app.use('/', createProxyMiddleware({
 }));
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Reverse Proxy Server listening on port ${PORT}`);
+    console.log(`Reverse Proxy Server listening on port http://localhost:${PORT}`);
 });
