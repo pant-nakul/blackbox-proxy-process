@@ -2,7 +2,7 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 1000;
 const TARGET_URL = process.env.CUSTOM_URL;
 const cors = require('cors');
 
@@ -19,6 +19,6 @@ app.use('/', createProxyMiddleware({
     },
 }));
 
-app.listen(PORT, () => {
-    console.log(`Reverse proxy running on http://localhost:${PORT}`);
-})
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Reverse Proxy Server listening on port ${port}`);
+});
