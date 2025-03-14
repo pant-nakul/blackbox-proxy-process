@@ -25,6 +25,6 @@ app.use('/', createProxyMiddleware({
     },
 }));
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Reverse proxy running on http://localhost:${PORT}`);
 })
