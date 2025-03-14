@@ -20,5 +20,5 @@ app.use('/', createProxyMiddleware({
 }));
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Reverse Proxy Server listening on port ${port}`);
+    console.log(`Reverse Proxy Server listening on port ${PORT}`);
 });
